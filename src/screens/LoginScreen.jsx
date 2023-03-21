@@ -7,11 +7,23 @@ const LoginScreen = () => {
         style={styles.container}
         behavior="padding"
     >
-      
+        <View
+            // style={styles.inputContainer}
+        >
+            <Text>Hello</Text>
+        </View>
     </KeyboardAvoidingView>
   )
 }
 
 export default LoginScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container : {
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        paddingTop: 40,
+        paddingLeft: 40
+    }
+})
