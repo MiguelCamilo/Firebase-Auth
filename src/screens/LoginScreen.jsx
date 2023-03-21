@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// import { Link } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/core";
 import {
 	Text,
@@ -51,18 +52,6 @@ const LoginScreen = () => {
 			});
 	};
 
-	const handleRegistration = () => {
-		createUserWithEmailAndPassword(auth, email, password)
-			.then((userCredentials) => {
-				const user = userCredentials.user;
-                // console.log(user)
-			})
-			.catch((err) => {
-				alert(`Email already in use`);
-				console.log(err.message);
-			});
-	};
-
 	const loginWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
@@ -82,7 +71,7 @@ const LoginScreen = () => {
 			className="flex-1 justify-center items-center"
 			behavior="padding"
 		>
-			<Text className="font-bold text-2xl mb-5">Login In</Text>
+			<Text className="font-bold text-2xl mb-5">Log In</Text>
 			{/* input container */}
 			<View className="w-[80%] bg-white rounded-lg mb-3">
 				<TextInput
@@ -107,18 +96,12 @@ const LoginScreen = () => {
 			<View className="w-[60%] justify-center items-center mt-10">
 				<TouchableOpacity
 					onPress={handleLogin}
-					className="bg-blue-600 p-2 mb-2 rounded-lg w-full"
+					className="bg-blue-600 p-2 rounded-lg w-full"
 				>
 					<Text className="text-white text-center font-bold">Login</Text>
 				</TouchableOpacity>
-				<TouchableOpacity
-					onPress={handleRegistration}
-					className="bg-white p-2 rounded-lg w-full border-2 border-blue-600"
-				>
-					<Text className="text-blue-600 text-center font-bold">Register</Text>
-				</TouchableOpacity>
 
-				{/* TODO */}
+                {/* TODO */}
 				<Text className="mt-2 font-bold">Or</Text>
 				<TouchableOpacity
 					onPress={loginWithGoogle}
@@ -126,6 +109,16 @@ const LoginScreen = () => {
 				>
 					<Text className="text-red-600 text-center font-bold">Google</Text>
 				</TouchableOpacity>
+				
+                <Text className="text-center font-semibold my-5">Don't have an account, Sign Up:</Text>
+                <TouchableOpacity
+					onPress={() => {
+                        navigation.replace("SignUp")
+                    }}
+					className="bg-white p-2 rounded-lg w-full border-2 border-blue-600"
+				>
+					<Text className="text-blue-600 text-center font-bold">Sign Up</Text>
+				</TouchableOpacity>				
 			</View>
 		</KeyboardAvoidingView>
 	);
