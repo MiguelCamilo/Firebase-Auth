@@ -9,11 +9,14 @@ import {
 } from "react-native";
 import React from "react";
 
+// google auth
 import { auth } from "../../firebase";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
-} from "firebase/auth";
+	signInWithPopup,
+	GoogleAuthProvider,
+} from "firebase/auth"
 
 const LoginScreen = () => {
 	const [email, setEmail] = useState("");
@@ -33,13 +36,13 @@ const LoginScreen = () => {
 		return unsubscribe;
 	}, []);
 
-	const handleLogin = () => {
+	const handleLogin = () => {        
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredentials) => {
 				const user = userCredentials.user;
-				if (user) {
-					navigation.navigate("Home");
-				}
+				// if (user) {
+				// 	navigation.navigate("Home");
+				// }
 				// console.log(user.email)
 			})
 			.catch((err) => {
@@ -52,10 +55,25 @@ const LoginScreen = () => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredentials) => {
 				const user = userCredentials.user;
+                // console.log(user)
 			})
 			.catch((err) => {
 				alert(`Email already in use`);
 				console.log(err.message);
+			});
+	};
+
+	const loginWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				const user = result.user;
+				console.log(user.email);
+			})
+			.catch((err) => {
+				alert(err.message);
 			});
 	};
 
@@ -64,7 +82,7 @@ const LoginScreen = () => {
 			className="flex-1 justify-center items-center"
 			behavior="padding"
 		>
-            <Text className="font-bold text-2xl mb-5">Login In</Text>
+			<Text className="font-bold text-2xl mb-5">Login In</Text>
 			{/* input container */}
 			<View className="w-[80%] bg-white rounded-lg mb-3">
 				<TextInput
@@ -101,9 +119,9 @@ const LoginScreen = () => {
 				</TouchableOpacity>
 
 				{/* TODO */}
-                <Text className="mt-2 font-bold">Or</Text>
+				<Text className="mt-2 font-bold">Or</Text>
 				<TouchableOpacity
-					// onPress={}
+					onPress={loginWithGoogle}
 					className="bg-white p-2 mb-2 rounded-lg w-full border-2 border-red-600 mt-2"
 				>
 					<Text className="text-red-600 text-center font-bold">Google</Text>

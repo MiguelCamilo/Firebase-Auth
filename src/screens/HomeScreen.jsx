@@ -12,16 +12,6 @@ const HomeScreen = () => {
 
     const navigation = useNavigation()
 
-    // useEffect(() => {
-    //     const unsubscribe = auth.onAuthStateChanged(user => {
-    //         if (user) {
-    //             navigation.navigate("Login")
-    //         }
-    //     })
-    //     // returning unsubscribe here stops the listener from being called
-    //     return unsubscribe
-    // },[]) 
-
     const handleSignOut = () => {
         signOut(auth)
             .then(() => {
