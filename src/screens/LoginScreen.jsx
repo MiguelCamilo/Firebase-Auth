@@ -41,10 +41,6 @@ const LoginScreen = () => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredentials) => {
 				const user = userCredentials.user;
-				// if (user) {
-				// 	navigation.navigate("Home");
-				// }
-				// console.log(user.email)
 			})
 			.catch((err) => {
 				alert(`Incorrect email or password, try again`);
@@ -71,11 +67,12 @@ const LoginScreen = () => {
 			className="flex-1 justify-center items-center"
 			behavior="padding"
 		>
-			<Text className="font-bold text-2xl mb-5">Log In</Text>
+			<Text className="font-bold text-2xl mb-3">Welcome Back!</Text>
+			<Text className="font-light mb-8 text-gray-600">Please enter your account here</Text>
 			{/* input container */}
 			<View className="w-[80%] bg-white rounded-lg mb-3">
 				<TextInput
-					className="p-2 placeholder:text-center"
+					className="p-2 placeholder:text-left"
 					placeholder="Email"
 					value={email}
 					onChangeText={(text) => setEmail(text)}
@@ -84,7 +81,7 @@ const LoginScreen = () => {
 
 			<View className="w-[80%] bg-white rounded-lg">
 				<TextInput
-					className="p-2 placeholder:text-center"
+					className="p-2 placeholder:text-left"
 					placeholder="Password"
 					secureTextEntry
 					value={password}
@@ -102,7 +99,7 @@ const LoginScreen = () => {
 				</TouchableOpacity>
 
                 {/* TODO */}
-				<Text className="mt-2 font-bold">Or</Text>
+				<Text className="mt-2 font-bold">Or continue with</Text>
 				<TouchableOpacity
 					onPress={loginWithGoogle}
 					className="bg-white p-2 mb-2 rounded-lg w-full border-2 border-red-600 mt-2"
