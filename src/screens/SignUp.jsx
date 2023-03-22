@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 
 const SignUp = () => {
@@ -16,9 +16,13 @@ const SignUp = () => {
 	};
 
   return (
-    <KeyboardAvoidingView>
-        <View>
-            <Text>Hello</Text>
+    <KeyboardAvoidingView className="flex-1 justify-center items-center" behavior='padding'>
+        <View className="w-[80%]">
+            <TextInput
+                className="p-1 rounded-md bg-white"
+                placeholder='Email'
+            >
+            </TextInput>            
         </View>
     </KeyboardAvoidingView>
     

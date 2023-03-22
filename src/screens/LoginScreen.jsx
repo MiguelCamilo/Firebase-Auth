@@ -110,7 +110,7 @@ const LoginScreen = () => {
                 <Text className="text-center font-semibold my-5">Don't have an account, Sign Up:</Text>
                 <TouchableOpacity
 					onPress={() => {
-                        navigation.replace("SignUp")
+                        navigation.navigate("SignUp")
                     }}
 					className="bg-white p-2 rounded-lg w-full border-2 border-blue-600"
 				>

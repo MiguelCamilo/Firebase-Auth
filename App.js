@@ -23,7 +23,7 @@ export default function App() {
         <Stack.Screen 
           name="SignUp" 
           component={SignUp}
-					options={{ headerShown: false }}
+					// options={{ headerShown: false }}
         />
 			</Stack.Navigator>
 		</NavigationContainer>
