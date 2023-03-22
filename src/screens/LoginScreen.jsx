@@ -17,7 +17,7 @@ import {
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	GoogleAuthProvider,
-} from "firebase/auth"
+} from "firebase/auth";
 
 const LoginScreen = () => {
 	const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ const LoginScreen = () => {
 		return unsubscribe;
 	}, []);
 
-	const handleLogin = () => {        
+	const handleLogin = () => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredentials) => {
 				const user = userCredentials.user;
@@ -49,8 +49,8 @@ const LoginScreen = () => {
 	};
 
 	const loginWithGoogle = () => {
-        const provider = new GoogleAuthProvider();
-        provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+		const provider = new GoogleAuthProvider();
+		provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
 		signInWithPopup(auth, provider)
 			.then((result) => {
@@ -63,12 +63,15 @@ const LoginScreen = () => {
 	};
 
 	return (
+        <>
 		<KeyboardAvoidingView
 			className="flex-1 justify-center items-center"
 			behavior="padding"
 		>
 			<Text className="font-bold text-2xl mb-3">Welcome Back!</Text>
-			<Text className="font-light mb-8 text-gray-600">Please enter your account here</Text>
+			<Text className="font-light mb-8 text-gray-600">
+				Please enter your account here
+			</Text>
 			{/* input container */}
 			<View className="w-[80%] bg-white rounded-lg mb-3">
 				<TextInput
@@ -98,26 +101,33 @@ const LoginScreen = () => {
 					<Text className="text-white text-center font-bold">Login</Text>
 				</TouchableOpacity>
 
-                {/* TODO */}
-				<Text className="mt-2 font-bold">Or continue with</Text>
+				{/* TODO */}
+				<Text className="h-px my-8 bg-gray-400 w-full mb-2"/>
+                <Text className="text-gray-800">Or continue with</Text>
+
 				<TouchableOpacity
 					onPress={loginWithGoogle}
-					className="bg-white p-2 mb-2 rounded-lg w-full border-2 border-red-600 mt-2"
+					className="bg-red-600 p-2 mb-2 rounded-lg w-full mt-5"
 				>
-					<Text className="text-red-600 text-center font-bold">Google</Text>
+					<Text className="text-white text-center font-bold">Google</Text>
 				</TouchableOpacity>
-				
-                <Text className="text-center font-semibold my-5">Don't have an account, Sign Up:</Text>
-                <TouchableOpacity
-					onPress={() => {
-                        navigation.navigate("SignUp")
-                    }}
-					className="bg-white p-2 rounded-lg w-full border-2 border-blue-600"
-				>
-					<Text className="text-blue-600 text-center font-bold">Sign Up</Text>
-				</TouchableOpacity>				
 			</View>
 		</KeyboardAvoidingView>
+        <View className="flex justify-center flex-row my-16">
+					<Text className="text-center font-semibold ">
+						Don't have an account?
+					</Text>
+
+					<TouchableOpacity
+						onPress={() => {
+							navigation.navigate("SignUp");
+						}}
+						className=""
+					>
+						<Text className="text-blue-600 text-center font-bold ml-2">Sign Up</Text>
+					</TouchableOpacity>
+				</View>
+        </>
 	);
 };
 
