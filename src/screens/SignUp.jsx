@@ -34,13 +34,17 @@ const SignUp = () => {
 	}, []);
 
 	const handleRegistration = () => {
+        if (email.length || password.length <= 1) {
+            alert("Please enter a valid email and password!");
+        }
+
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredentials) => {
 				const user = userCredentials.user;
 				// console.log(user);
 			})
 			.catch((err) => {
-				alert(`Email already in use`);
+				// alert(`Email already in use`);
 				console.log(err.message);
 			});
 	};
@@ -59,7 +63,7 @@ const SignUp = () => {
 				</View>
 				<View className="w-[90%] mb-5">
 					<TextInput
-						className="p-2 placeholder:text-left"
+						className="p-2 placeholder:text-left bg-white rounded-lg"
 						placeholder="Email"
 						value={email}
 						onChangeText={(text) => setEmail(text)}
@@ -68,7 +72,7 @@ const SignUp = () => {
 
 				<View className="w-[90%] mb-5">
 					<TextInput
-						className="p-2 placeholder:text-left"
+						className="p-2 placeholder:text-left bg-white rounded-lg"
 						placeholder="Password"
 						secureTextEntry
 						value={password}
@@ -78,7 +82,7 @@ const SignUp = () => {
 
 				<TouchableOpacity
 					onPress={handleRegistration}
-					className="bg-blue-600 p-3 rounded-lg w-[90%]"
+					className="bg-blue-600 p-3 rounded-lg w-[90%] mt-5"
 				>
 					<Text className="text-white text-center font-bold">Sign Up</Text>
 				</TouchableOpacity>

@@ -37,12 +37,16 @@ const LoginScreen = () => {
 	}, []);
 
 	const handleLogin = () => {
+        if (email.length || password.length <= 1) {
+            alert("Please enter a valid email and password!");
+        }
+
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredentials) => {
 				const user = userCredentials.user;
 			})
 			.catch((err) => {
-				alert(`Incorrect email or password, try again`);
+				// alert(`Incorrect email or password, try again`);
 				console.log(err.message);
 			});
 	};
@@ -101,7 +105,7 @@ const LoginScreen = () => {
 				</TouchableOpacity>
 
 				{/* TODO */}
-				<Text className="h-px my-8 bg-gray-400 w-[90%] mb-2"/>
+				<Text className="h-px my-8 bg-gray-300 w-[70%] mb-2"/>
                 <Text className="text-gray-800">Or continue with</Text>
 
 				<TouchableOpacity
