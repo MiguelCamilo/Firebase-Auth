@@ -12,19 +12,18 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-
 				<Stack.Screen
-          // removes header
+					// removes header
 					options={{ headerShown: false }}
 					name="Login"
 					component={LoginScreen}
 				/>
 				<Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen 
-          name="SignUp" 
-          component={SignUp}
-					// options={{ headerShown: false }}
-        />
+				<Stack.Screen
+					name="SignUp"
+					component={SignUp}
+					options={{ headerShown: false }}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

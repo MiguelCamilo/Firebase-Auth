@@ -13,7 +13,6 @@ import React from "react";
 // google auth
 import { auth } from "../../firebase";
 import {
-	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	GoogleAuthProvider,
@@ -73,7 +72,7 @@ const LoginScreen = () => {
 				Please enter your account here
 			</Text>
 			{/* input container */}
-			<View className="w-[80%] bg-white rounded-lg mb-3">
+			<View className="w-[90%] bg-white rounded-lg mb-3">
 				<TextInput
 					className="p-2 placeholder:text-left"
 					placeholder="Email"
@@ -82,7 +81,7 @@ const LoginScreen = () => {
 				/>
 			</View>
 
-			<View className="w-[80%] bg-white rounded-lg">
+			<View className="w-[90%] bg-white rounded-lg">
 				<TextInput
 					className="p-2 placeholder:text-left"
 					placeholder="Password"
@@ -93,21 +92,21 @@ const LoginScreen = () => {
 			</View>
 
 			{/* button container */}
-			<View className="w-[60%] justify-center items-center mt-10">
+			<View className="w-full justify-center items-center mt-10">
 				<TouchableOpacity
 					onPress={handleLogin}
-					className="bg-blue-600 p-2 rounded-lg w-full"
+					className="bg-blue-600 p-3 rounded-lg w-[90%]"
 				>
 					<Text className="text-white text-center font-bold">Login</Text>
 				</TouchableOpacity>
 
 				{/* TODO */}
-				<Text className="h-px my-8 bg-gray-400 w-full mb-2"/>
+				<Text className="h-px my-8 bg-gray-400 w-[90%] mb-2"/>
                 <Text className="text-gray-800">Or continue with</Text>
 
 				<TouchableOpacity
 					onPress={loginWithGoogle}
-					className="bg-red-600 p-2 mb-2 rounded-lg w-full mt-5"
+					className="bg-red-600 p-3 mb-2 rounded-lg w-[90%] mt-5"
 				>
 					<Text className="text-white text-center font-bold">Google</Text>
 				</TouchableOpacity>
