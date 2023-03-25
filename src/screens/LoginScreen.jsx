@@ -18,6 +18,8 @@ import {
 	GoogleAuthProvider,
 } from "firebase/auth";
 
+
+
 const LoginScreen = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
